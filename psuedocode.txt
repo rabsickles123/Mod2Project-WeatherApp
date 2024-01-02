@@ -1,0 +1,6 @@
+Weather app Pseudocode/Wireframe/Planning
+
+Simple weather app with location and the weather with icons. 
+Use a wireframe and a css framework! (Figma and bootstrap/tailwind)
+
+API used 
