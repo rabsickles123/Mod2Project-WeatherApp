@@ -10,17 +10,17 @@ export default function WeatherData() {
 
         try { 
 
-            const response = await fetch(`http://api.weatherstack.com/current?access_key=${key}&query=New York`)
+            const response = await fetch("")
             const data = await response.json()
             console.log(data)
             
         } catch(error) {
-            console.log(error.info)
+            console.log(error)
         }
     }
 
   return (
 
-    <div>WeatherData</div>
+    <button onClick={()=>{getData}}>WeatherData</button>
   )
 }
