@@ -23,16 +23,14 @@ function App() {
           console.log(data)
           console.log(data[0].lat)
           console.log(data[0].lon)
-          // setCoordinates(data.lat, data.long)
-          
+          setLatitude(data[0].lat)
+          setLongitude(data[0].lon)         
       } catch(error) {
           console.log(error)
       }
   }
 
-  useEffect(()=>{getCoordinates()},[] )
-
-
+  useEffect(()=>{getCoordinates()}, [])
 
 
   return (

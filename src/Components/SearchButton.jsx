@@ -3,6 +3,6 @@ export default function SearchButton() {
 
   return (
 
-    <button className="weather-button">Get Weather</button>
+    <button className="weather-button" onClick= {()=>{}}>Get Weather</button>
   )
 }
