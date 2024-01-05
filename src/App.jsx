@@ -9,7 +9,7 @@ let key = import.meta.env.VITE_API_KEY
 
 function App() {
 
-  let [city, setCity] = useState(null)
+  let [city, setCity] = useState("Detroit,MI,USA")
   let [weather, setWeather] = useState(null)
   let [coordinates, setCoordinates] = useState(null)
   let [latitude, setLatitude] = useState(null)
@@ -18,7 +18,7 @@ function App() {
   async function getCoordinates() {
       
       try { 
-          const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=Detroit,MI,USA&limit=5&appid=${key}`)
+          const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`)
           const data = await response.json()
           console.log(data)
           console.log(data[0].lat)
@@ -31,6 +31,16 @@ function App() {
   }
 
   useEffect(()=>{getCoordinates()}, [])
+
+  async function getWeather() {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`)
+      const data = await response.json()
+      console.log(data)
+  } catch(error) {
+    console.log(error)
+  }
+}
 
 
   return (
