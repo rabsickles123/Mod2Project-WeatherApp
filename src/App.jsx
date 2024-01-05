@@ -21,8 +21,6 @@ function App() {
           const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`)
           const data = await response.json()
           console.log(data)
-          console.log(data[0].lat)
-          console.log(data[0].lon)
           setLatitude(data[0].lat)
           setLongitude(data[0].lon)         
       } catch(error) {
@@ -38,9 +36,11 @@ function App() {
       const data = await response.json()
       console.log(data)
   } catch(error) {
-    console.log(error)
+    console.log(error.message)
+    } 
   }
-}
+
+getWeather()
 
 
   return (
