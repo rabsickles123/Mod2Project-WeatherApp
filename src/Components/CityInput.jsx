@@ -1,6 +1,6 @@
 export default function CityInput(){
 
   return (
-    <input type="text" className ="cityInput" placeholder="Enter city"/>
+    <input type="text" className ="cityInput" placeholder="Enter city" Change = {city}/>
   )
 }

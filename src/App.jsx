@@ -3,9 +3,9 @@ import { useState } from 'react'
 import './App.css'
 import SearchButton from './Components/SearchButton'
 import CityInput from './Components/CityInput'
+import WeatherDisplay from './Components/WeatherDisplay'
 
 let key = import.meta.env.VITE_API_KEY
-
 
 function App() {
 
@@ -32,21 +32,24 @@ function App() {
 
   async function getWeather() {
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`)
-      const data = await response.json()
-      console.log(data)
+      if (latitude && longitude) {
+        const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`)
+        const data = await response.json()
+        console.log(data)
+      }
   } catch(error) {
     console.log(error.message)
     } 
   }
 
-getWeather()
+useEffect(()=>{getWeather()}, [latitude, longitude])
 
 
   return (
     <>
-    <CityInput/>
+    <CityInput onCityChange = {setCity}/>
     <SearchButton/>
+    <WeatherDisplay/>
     </>
   )
 }
