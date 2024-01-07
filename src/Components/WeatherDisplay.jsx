@@ -1,8 +1,9 @@
-export default function WeatherDisplay() {
+export default function WeatherDisplay({city, temperature, description}) {
     return (
       <div>
-            <h2>Current Temperature: 32°F</h2>
-            <p>Description: </p>    
+            <h1>{city}</h1>
+            <h2>Current Temperature: {temperature}°F</h2>
+            <p>Description: {description} </p>    
       </div>
     );
   };
