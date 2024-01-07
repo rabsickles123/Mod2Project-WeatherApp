@@ -33,9 +33,10 @@ function App() {
   async function getWeather() {
     try {
       if (latitude && longitude) {
-        const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${key}`)
+        const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`)
         const data = await response.json()
-        console.log(data)
+        console.log(data.current)
+        console.log(data.current.temp)
       }
   } catch(error) {
     console.log(error.message)
