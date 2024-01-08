@@ -16,13 +16,13 @@ const CityInput = ({ onCityChange }) => {
   return (
     <div className = "input-bar">
         <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter city name"
-        value={cityInput}
-        onChange= {handleInputChange}/>
-     <button type="submit">Get Weather</button>
-    </form>
+            <input className = "input"
+                type="text"
+                placeholder="Enter city name"
+                value={cityInput}
+                onChange= {handleInputChange}/>
+        <button className="get-weather-button" type="submit">Get Weather</button>
+        </form>
     </div>
   );
 };
