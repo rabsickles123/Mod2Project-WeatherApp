@@ -11,15 +11,13 @@ function App() {
   let [city, setCity] = useState("Detroit")
   let [state, setState] = useState("Michigan")
   let [country, setCountry] = useState("USA")
-  let [weather, setWeather] = useState(null)
-  let [coordinates, setCoordinates] = useState(null)
+
   let [latitude, setLatitude] = useState(null)
   let [longitude, setLongitude] = useState(null)
   let [temperature, setTemperature] = useState(null)
   let [description, setDescription] = useState(null)
 
-  async function getCoordinates() {
-      
+  async function getCoordinates() {    
       try { 
           const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`)
           const data = await response.json()

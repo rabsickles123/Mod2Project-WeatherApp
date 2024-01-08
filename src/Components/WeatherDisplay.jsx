@@ -3,6 +3,7 @@ export default function WeatherDisplay({city, state, country, temperature, descr
       <div>
         <h1>{city}</h1>
         <h3>{state}, {country}</h3>
+        <img src = "./assets/" alt = "image"/>
             {temperature !== null && (
                 <>
                     <h2>Current Temperature: {temperature}°F</h2>
