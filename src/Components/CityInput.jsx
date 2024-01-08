@@ -1,34 +1,29 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function CityInput({onCityChange}){
+const CityInput = ({ onCityChange }) => {
+  const [cityInput, setCityInput] = useState('');
 
-    const [inputCity, setInputCity] = useState('');
+  function handleInputChange(event) {
+    setCityInput(event.target.value);
+  };
 
-    function handleInputChange(e) {
-    setInputCity(e.target.value);
-    };
-
-    function handleSearchClick() {
-    onCityChange(inputCity);
-    };
-
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-          onCityChange(inputCity);
-        }
-      };
-
+  function handleSubmit(event) {
+    event.preventDefault();
+    onCityChange(cityInput);
+    setCityInput(''); 
+  };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Enter city name"
-        value={inputCity}
+        value={cityInput}
         onChange={handleInputChange}
       />
-      <button onClick={handleSearchClick}>Search</button>
-    </div>
+      <button type="submit">Get Weather</button>
+    </form>
   );
 };
 
+export default CityInput;

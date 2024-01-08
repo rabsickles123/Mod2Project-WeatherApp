@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import './App.css'
-import SearchButton from './Components/SearchButton'
 import CityInput from './Components/CityInput'
 import WeatherDisplay from './Components/WeatherDisplay'
 
@@ -9,7 +8,9 @@ let key = import.meta.env.VITE_API_KEY
 
 function App() {
 
-  let [city, setCity] = useState("Detroit, MI, USA")
+  let [city, setCity] = useState("Detroit")
+  let [state, setState] = useState("Michigan")
+  let [country, setCountry] = useState("USA")
   let [weather, setWeather] = useState(null)
   let [coordinates, setCoordinates] = useState(null)
   let [latitude, setLatitude] = useState(null)
@@ -23,6 +24,8 @@ function App() {
           const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`)
           const data = await response.json()
           console.log(data)
+          setState(data[0].state)
+          setCountry(data[0].country)
           setLatitude(data[0].lat)
           setLongitude(data[0].lon)         
       } catch(error) {
@@ -30,14 +33,14 @@ function App() {
       }
   }
 
-  useEffect(()=>{getCoordinates()}, [])
+  useEffect(()=>{getCoordinates()}, [city])
 
   async function getWeather() {
     try {
       if (latitude && longitude) {
-        const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`)
+        const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=imperial&lang=en&appid=${key}`)
         const data = await response.json()
-        console.log(data.current)
+        console.log(data)
         setTemperature(data.current.temp)
         setDescription(data.current.weather[0].description)
       }
@@ -48,12 +51,17 @@ function App() {
 
 useEffect(()=>{getWeather()}, [latitude, longitude])
 
+useEffect(() => {
+  if (latitude !== null && longitude !== null) {
+    getWeather();
+  }
+}, [latitude, longitude]);
+
 
   return (
     <>
     <CityInput onCityChange = {setCity}/>
-    <SearchButton/>
-    <WeatherDisplay city={city} temperature= {temperature} description = {description}/>
+    <WeatherDisplay city={city} state ={state} country={country} temperature= {temperature} description = {description}/>
     </>
   )
 }
