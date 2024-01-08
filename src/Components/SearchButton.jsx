@@ -1,7 +1,7 @@
-export default function SearchButton() {
+export default function SearchButton({}) {
 
   return (
 
-    <button className="weather-button" onClick= {()=>{}}>Get Weather</button>
+    <div></div>
   )
 }
