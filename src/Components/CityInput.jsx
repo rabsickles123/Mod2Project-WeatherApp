@@ -14,15 +14,16 @@ const CityInput = ({ onCityChange }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className = "input-bar">
+        <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Enter city name"
         value={cityInput}
-        onChange={handleInputChange}
-      />
-      <button type="submit">Get Weather</button>
+        onChange= {handleInputChange}/>
+     <button type="submit">Get Weather</button>
     </form>
+    </div>
   );
 };
 

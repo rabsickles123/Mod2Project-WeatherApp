@@ -10,12 +10,12 @@ function App() {
 
   let [city, setCity] = useState("Detroit")
   let [state, setState] = useState("Michigan")
-  let [country, setCountry] = useState("USA")
-
+  let [country, setCountry] = useState("US")
   let [latitude, setLatitude] = useState(null)
   let [longitude, setLongitude] = useState(null)
   let [temperature, setTemperature] = useState(null)
   let [description, setDescription] = useState(null)
+
 
   async function getCoordinates() {    
       try { 
@@ -59,7 +59,7 @@ useEffect(() => {
   return (
     <>
     <CityInput onCityChange = {setCity}/>
-    <WeatherDisplay city={city} state ={state} country={country} temperature= {temperature} description = {description}/>
+    <WeatherDisplay city={city} state ={state} country={country} temperature= {temperature} description = {description} />
     </>
   )
 }
