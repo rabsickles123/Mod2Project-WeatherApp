@@ -26,7 +26,7 @@ function App() {
 
   async function getCoordinates() {    
       try { 
-          const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`)
+          const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`)
           const data = await response.json()
           console.log(data)
           setState(data[0].state)
