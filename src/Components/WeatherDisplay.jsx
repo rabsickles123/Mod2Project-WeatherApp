@@ -1,6 +1,6 @@
 import picture from "./Assets/weather-app.png"
 
-export default function WeatherDisplay({city, state, country, temperature, description, summary, high, low, feelslike}) {
+export default function WeatherDisplay({city, state, country, temperature, description, summary, high, low, feelslike, alert}) {
     return (
       <div className = "container">
         <img className = "image" src = {picture} alt = "weather icon"/>
@@ -11,7 +11,6 @@ export default function WeatherDisplay({city, state, country, temperature, descr
            {temperature !== null && (
                 <>
                     <h3>Feels like: {feelslike}°F </h3>
-                    
                     <p id = "description">{description}</p> 
                     <p id = "summary">{summary}</p>
                 </>

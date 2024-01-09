@@ -19,6 +19,9 @@ function App() {
   let [high, setHigh] = useState(null)
   let [low, setLow] = useState(null)
   let [summary, setSummary] = useState(null)
+  let [alert, setAlert] = useState(null)
+  let [event, setEvent] = useState(null)
+  let [sender, setSender] = useState(null)
 
 
   async function getCoordinates() {    
@@ -49,6 +52,9 @@ function App() {
         setHigh(data.daily[0].temp.max)
         setLow(data.daily[0].temp.min)
         setSummary(data.daily[1].summary)
+        setAlert(data.alerts[0]?.description)
+        setEvent(data.alerts[0]?.event)
+        setSender(data.alerts[0]?.sender_name)
       }
   } catch(error) {
     console.log(error.message)
@@ -67,7 +73,7 @@ useEffect(() => {
   return (
     <>
     <CityInput onCityChange = {setCity}/>
-    <WeatherDisplay city={city} state ={state} country={country} temperature= {temperature} description = {description} summary = {summary} high={high} low={low} feelslike = {feelslike}/>
+    <WeatherDisplay city={city} state ={state} country={country} temperature= {temperature} description = {description} summary = {summary} high={high} low={low} feelslike = {feelslike} alert = {alert}/>
     </>
   )
 }
